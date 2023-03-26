@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project Template</title>
+        <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+<a href="{% url 'demo:create' %}">Добавить</a>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>AUDD</th>
+				<th>DISCOGS</th>
+				<th>GENIUS</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for composition in composition_list %}
+			<tr>
+				<td><a href="{% url 'demo:detail' composition.pk %}">{{ composition.pk }}</a></td>
+				<td>{{ composition.audd|default:"" }}</td>
+				<td>{{ composition.discogs|default:"" }}</td>
+				<td>{{ composition.genius|default:"" }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
